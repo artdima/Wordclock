@@ -1,0 +1,360 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+		512B941BD36A48AD9F712F9E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = VerbariusScreenSaverView.swift;
+			sourceTree = "<group>";
+		};
+		7A73DBF911C94E57B59BE7F7 = {
+			isa = PBXBuildFile;
+			fileRef = 512B941BD36A48AD9F712F9E;
+		};
+		AAF635BCA40C416AB84366B2 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ClockEngine.swift;
+			sourceTree = "<group>";
+		};
+		40BDE42EBC2B4E6CA03376A1 = {
+			isa = PBXBuildFile;
+			fileRef = AAF635BCA40C416AB84366B2;
+		};
+		297A5A16406D460EBB90C47A = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ClockLibrary.swift;
+			sourceTree = "<group>";
+		};
+		E8BD099C9B904FD4B6B34D32 = {
+			isa = PBXBuildFile;
+			fileRef = 297A5A16406D460EBB90C47A;
+		};
+		CD3BAA5A779844EB9E5980CD = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ClockScreen.swift;
+			sourceTree = "<group>";
+		};
+		B4692CFF69234E0EACAE8074 = {
+			isa = PBXBuildFile;
+			fileRef = CD3BAA5A779844EB9E5980CD;
+		};
+		6D07F9C38CB64D09BF4B335E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ConfigureView.swift;
+			sourceTree = "<group>";
+		};
+		5DB24817D617458B9775E5B9 = {
+			isa = PBXBuildFile;
+			fileRef = 6D07F9C38CB64D09BF4B335E;
+		};
+		6FCE175D9F7E4589A132EC6A = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = Settings.swift;
+			sourceTree = "<group>";
+		};
+		BCFF828D187E4F0E993A2668 = {
+			isa = PBXBuildFile;
+			fileRef = 6FCE175D9F7E4589A132EC6A;
+		};
+		B73263C279E1435D9E63E2CB = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.xml;
+			path = Info.plist;
+			sourceTree = "<group>";
+		};
+		CEF5CF8EB8804301A72E1FB2 = {
+			isa = PBXFileReference;
+			fileEncoding = 4;
+			lastKnownFileType = text.json;
+			path = English.json;
+			sourceTree = "<group>";
+		};
+		EC936E415DD143A4B3391E1B = {
+			isa = PBXBuildFile;
+			fileRef = CEF5CF8EB8804301A72E1FB2;
+		};
+		356D70DA82864C7F82B16CD8 = {
+			isa = PBXFileReference;
+			fileEncoding = 4;
+			lastKnownFileType = text.json;
+			path = Russia.json;
+			sourceTree = "<group>";
+		};
+		09EA015405304F0F9AB33696 = {
+			isa = PBXBuildFile;
+			fileRef = 356D70DA82864C7F82B16CD8;
+		};
+		EFD7DE07C2F74AD194C1451A = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = ScreenSaver.framework;
+			path = System/Library/Frameworks/ScreenSaver.framework;
+			sourceTree = SDKROOT;
+		};
+		BE58C65168904AC3B34B1D4C = {
+			isa = PBXBuildFile;
+			fileRef = EFD7DE07C2F74AD194C1451A;
+		};
+		EBF070ECC6574E41B31B820F = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = VerbariusScreenSaver.saver;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0DE7CCA906904A65AADCCD28 = {
+			isa = PBXGroup;
+			children = (
+				512B941BD36A48AD9F712F9E,
+				AAF635BCA40C416AB84366B2,
+				297A5A16406D460EBB90C47A,
+				CD3BAA5A779844EB9E5980CD,
+				6D07F9C38CB64D09BF4B335E,
+				6FCE175D9F7E4589A132EC6A,
+				B73263C279E1435D9E63E2CB,
+			);
+			path = VerbariusScreenSaver;
+			sourceTree = "<group>";
+		};
+		B5953340B90E48ECA3F2E1CE = {
+			isa = PBXGroup;
+			children = (
+				EFD7DE07C2F74AD194C1451A,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6014C2EC85B945F09778FEAB = {
+			isa = PBXGroup;
+			children = (
+				EBF070ECC6574E41B31B820F,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7402B8D34CEC468CA011AD2D = {
+			isa = PBXGroup;
+			children = (
+				0DE7CCA906904A65AADCCD28,
+				CEF5CF8EB8804301A72E1FB2,
+				356D70DA82864C7F82B16CD8,
+				B5953340B90E48ECA3F2E1CE,
+				6014C2EC85B945F09778FEAB,
+			);
+			sourceTree = "<group>";
+		};
+		E2C4EE130DD442CA9F3B25F1 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A73DBF911C94E57B59BE7F7,
+				40BDE42EBC2B4E6CA03376A1,
+				E8BD099C9B904FD4B6B34D32,
+				B4692CFF69234E0EACAE8074,
+				5DB24817D617458B9775E5B9,
+				BCFF828D187E4F0E993A2668,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC594796F844262AD652BAB = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE58C65168904AC3B34B1D4C,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2ACD423D0541479AB7C38761 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC936E415DD143A4B3391E1B,
+				09EA015405304F0F9AB33696,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91A886E3B6564E0BA082BC30 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		593A0552CB2144DAAEB93E4A = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		DB10D472A1A8487C9E3986C8 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DY3Z5JMQ7L;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VerbariusScreenSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACH_O_TYPE = mh_bundle;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = verbarius.clock.VerbariusScreenSaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		6B0C4E1A86D141D1A183FBAB = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DY3Z5JMQ7L;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VerbariusScreenSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACH_O_TYPE = mh_bundle;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = verbarius.clock.VerbariusScreenSaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		04378C54DD724BD68511133D = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91A886E3B6564E0BA082BC30,
+				593A0552CB2144DAAEB93E4A,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17FB9D6E182E4C47BFA213C1 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB10D472A1A8487C9E3986C8,
+				6B0C4E1A86D141D1A183FBAB,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ECA2CA50E994389BD3A8F67 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17FB9D6E182E4C47BFA213C1;
+			buildPhases = (
+				E2C4EE130DD442CA9F3B25F1,
+				DBC594796F844262AD652BAB,
+				2ACD423D0541479AB7C38761,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VerbariusScreenSaver;
+			productName = VerbariusScreenSaver;
+			productReference = EBF070ECC6574E41B31B820F;
+			productType = "com.apple.product-type.bundle";
+		};
+		3B6157E2F5184F9CBE156EFF = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					7ECA2CA50E994389BD3A8F67 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 04378C54DD724BD68511133D;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7402B8D34CEC468CA011AD2D;
+			productRefGroup = 6014C2EC85B945F09778FEAB;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7ECA2CA50E994389BD3A8F67,
+			);
+		};
+	};
+	rootObject = 3B6157E2F5184F9CBE156EFF;
+}
