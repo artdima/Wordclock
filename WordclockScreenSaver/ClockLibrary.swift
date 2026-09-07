@@ -8,7 +8,7 @@ enum ClockLanguage: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .russian: return "Русский"
+        case .russian: return "Russian"
         case .english: return "English"
         }
     }

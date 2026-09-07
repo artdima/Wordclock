@@ -10,7 +10,7 @@ struct ConfigureView: View {
             Text("Wordclock")
                 .font(.title2.weight(.semibold))
 
-            Picker("Язык", selection: $settings.language) {
+            Picker("Language", selection: $settings.language) {
                 ForEach(ClockLanguage.allCases) { language in
                     Text(language.title).tag(language)
                 }
@@ -18,19 +18,19 @@ struct ConfigureView: View {
             .pickerStyle(.segmented)
             .labelsHidden()
 
-            Toggle("Менять формулировки", isOn: $settings.variety)
-            Toggle("Смещать текст (защита экрана)", isOn: $settings.drift)
+            Toggle("Vary the wording", isOn: $settings.variety)
+            Toggle("Shift the text to spare the display", isOn: $settings.drift)
 
             VStack(alignment: .leading, spacing: 6) {
-                Text("Размер текста")
+                Text("Text size")
                 Slider(value: $settings.textScale, in: 0.5...1.6)
             }
 
             HStack {
                 Spacer()
-                Button("Отмена", action: onCancel)
+                Button("Cancel", action: onCancel)
                     .keyboardShortcut(.cancelAction)
-                Button("Готово") { onSave(settings) }
+                Button("Done") { onSave(settings) }
                     .keyboardShortcut(.defaultAction)
             }
         }

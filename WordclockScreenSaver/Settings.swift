@@ -2,7 +2,7 @@ import Foundation
 import ScreenSaver
 
 struct SaverSettings: Equatable {
-    var language: ClockLanguage = .russian
+    var language: ClockLanguage = .english
     var variety = true
     var drift = true
     var textScale = 1.0
@@ -21,7 +21,7 @@ enum SettingsStore {
     private static var defaults: ScreenSaverDefaults? {
         let store = ScreenSaverDefaults(forModuleWithName: moduleName)
         store?.register(defaults: [
-            Key.language: ClockLanguage.russian.rawValue,
+            Key.language: ClockLanguage.english.rawValue,
             Key.variety: true,
             Key.drift: true,
             Key.textScale: 1.0
