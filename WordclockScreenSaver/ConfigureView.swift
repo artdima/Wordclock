@@ -7,7 +7,7 @@ struct ConfigureView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text("Verbarius")
+            Text("Wordclock")
                 .font(.title2.weight(.semibold))
 
             Picker("Язык", selection: $settings.language) {

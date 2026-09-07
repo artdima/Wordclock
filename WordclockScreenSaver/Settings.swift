@@ -9,7 +9,7 @@ struct SaverSettings: Equatable {
 }
 
 enum SettingsStore {
-    static let moduleName = "verbarius.clock.VerbariusScreenSaver"
+    static let moduleName = "wordclock.clock.WordclockScreenSaver"
 
     private enum Key {
         static let language = "language"

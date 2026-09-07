@@ -6,9 +6,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7ECA2CA50E994389BD3A8F67"
-               BuildableName = "VerbariusScreenSaver.saver"
-               BlueprintName = "VerbariusScreenSaver"
-               ReferencedContainer = "container:VerbariusScreenSaver.xcodeproj">
+               BuildableName = "WordclockScreenSaver.saver"
+               BlueprintName = "WordclockScreenSaver"
+               ReferencedContainer = "container:WordclockScreenSaver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -22,9 +22,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7ECA2CA50E994389BD3A8F67"
-            BuildableName = "VerbariusScreenSaver.saver"
-            BlueprintName = "VerbariusScreenSaver"
-            ReferencedContainer = "container:VerbariusScreenSaver.xcodeproj">
+            BuildableName = "WordclockScreenSaver.saver"
+            BlueprintName = "WordclockScreenSaver"
+            ReferencedContainer = "container:WordclockScreenSaver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7ECA2CA50E994389BD3A8F67"
-            BuildableName = "VerbariusScreenSaver.saver"
-            BlueprintName = "VerbariusScreenSaver"
-            ReferencedContainer = "container:VerbariusScreenSaver.xcodeproj">
+            BuildableName = "WordclockScreenSaver.saver"
+            BlueprintName = "WordclockScreenSaver"
+            ReferencedContainer = "container:WordclockScreenSaver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

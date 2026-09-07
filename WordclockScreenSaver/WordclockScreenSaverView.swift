@@ -1,13 +1,13 @@
 import ScreenSaver
 import SwiftUI
 
-@objc(VerbariusScreenSaverView)
-final class VerbariusScreenSaverView: ScreenSaverView {
+@objc(WordclockScreenSaverView)
+final class WordclockScreenSaverView: ScreenSaverView {
     private let engine: ClockEngine
     private var sheetWindow: NSWindow?
 
     override init?(frame: NSRect, isPreview: Bool) {
-        let bundle = Bundle(for: VerbariusScreenSaverView.self)
+        let bundle = Bundle(for: WordclockScreenSaverView.self)
         engine = ClockEngine(settings: SettingsStore.load(), bundle: bundle)
         super.init(frame: frame, isPreview: isPreview)
 
@@ -39,7 +39,7 @@ final class VerbariusScreenSaverView: ScreenSaverView {
                               styleMask: [.titled],
                               backing: .buffered,
                               defer: true)
-        window.title = "Verbarius"
+        window.title = "Wordclock"
 
         let content = ConfigureView(
             settings: SettingsStore.load(),

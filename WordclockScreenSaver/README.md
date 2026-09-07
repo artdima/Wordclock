@@ -1,15 +1,15 @@
-# Verbarius Screen Saver (macOS)
+# Wordclock Screen Saver (macOS)
 
 Заставка для macOS: время прописью из `English.json` / `Russia.json`.
 
 ## Сборка
 
-1. Открыть `VerbariusScreenSaver.xcodeproj` в корне репозитория.
-2. Выбрать схему `VerbariusScreenSaver`, `Product → Build` (⌘B).
-3. В навигаторе `Products` → правый клик на `VerbariusScreenSaver.saver` → `Show in Finder`.
+1. Открыть `WordclockScreenSaver.xcodeproj` в корне репозитория.
+2. Выбрать схему `WordclockScreenSaver`, `Product → Build` (⌘B).
+3. В навигаторе `Products` → правый клик на `WordclockScreenSaver.saver` → `Show in Finder`.
 4. Двойной клик по `.saver` — macOS предложит установить, либо скопировать вручную
    в `~/Library/Screen Savers/`.
-5. `Системные настройки → Заставка → Verbarius`. Кнопка «Параметры» открывает
+5. `Системные настройки → Заставка → Wordclock`. Кнопка «Параметры» открывает
    выбор языка, разнообразия формулировок, смещения текста и размера шрифта.
 
 После пересборки заставку нужно скопировать заново, а System Settings — перезапустить
@@ -19,7 +19,7 @@
 
 | Файл | Роль |
 |---|---|
-| `VerbariusScreenSaverView.swift` | `ScreenSaverView`, хостит SwiftUI и отдаёт configure sheet |
+| `WordclockScreenSaverView.swift` | `ScreenSaverView`, хостит SwiftUI и отдаёт configure sheet |
 | `ClockEngine.swift` | тик раз в 0.5 с, выбор фразы на текущую минуту, дрейф текста |
 | `ClockLibrary.swift` | разбор JSON: `value_1…value_N` → массив вариантов |
 | `ClockScreen.swift` | полноэкранная вёрстка текста |
