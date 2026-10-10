@@ -2,7 +2,6 @@
  {
   "clock": "00:00",
   "value_1": "Midnight",
-  "value_2": "Zero o'clock",
   "value_3": "Twelve o'clock",
   "value_4": "Twelve o'clock at night"
  },
@@ -9330,8 +9329,7 @@
   "value_1": "Two o'clock",
   "value_2": "Two o'clock in the afternoon",
   "value_3": "Two p.m.",
-  "value_4": "Two",
-  "value_7": "One"
+  "value_4": "Two"
  },
  {
   "clock": "14:01",

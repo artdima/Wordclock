@@ -7,8 +7,7 @@ final class WordclockScreenSaverView: ScreenSaverView {
     private var sheetWindow: NSWindow?
 
     override init?(frame: NSRect, isPreview: Bool) {
-        let bundle = Bundle(for: WordclockScreenSaverView.self)
-        engine = ClockEngine(settings: SettingsStore.load(), bundle: bundle)
+        engine = ClockEngine(settings: SettingsStore.load(), bundle: WordclockBundle.bundle)
         super.init(frame: frame, isPreview: isPreview)
 
         animationTimeInterval = 0.5
@@ -33,13 +32,10 @@ final class WordclockScreenSaverView: ScreenSaverView {
     override var hasConfigureSheet: Bool { true }
 
     override var configureSheet: NSWindow? {
-        if let sheetWindow { return sheetWindow }
-
         let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 380, height: 260),
                               styleMask: [.titled],
                               backing: .buffered,
                               defer: true)
-        window.title = "Wordclock"
 
         let content = ConfigureView(
             settings: SettingsStore.load(),

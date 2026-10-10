@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  phrases:
+    name: Validate phrase files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/validate_phrases.py
+
+  build:
+    name: Build screen saver
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcodebuild -scheme WordclockScreenSaver -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO build

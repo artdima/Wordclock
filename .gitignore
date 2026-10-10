@@ -97,3 +97,6 @@ Icon
 
 # Screen saver build product
 *.saver
+
+# Release artifacts
+dist/

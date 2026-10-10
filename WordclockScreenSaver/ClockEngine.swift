@@ -1,37 +1,32 @@
+import Combine
+import CoreGraphics
 import Foundation
-import SwiftUI
 
 final class ClockEngine: ObservableObject {
     @Published private(set) var phrase = ""
     @Published private(set) var drift = CGSize.zero
+    @Published private(set) var settings: SaverSettings
 
     private let bundle: Bundle
-    private var settings: SaverSettings
     private var library: ClockLibrary
     private var currentKey = ""
 
-    private static let keyFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "HH:mm"
-        return formatter
-    }()
+    private static let calendar = Calendar.autoupdatingCurrent
 
     init(settings: SaverSettings, bundle: Bundle) {
         self.settings = settings
         self.bundle = bundle
-        self.library = ClockLibrary(language: settings.language, bundle: bundle)
+        self.library = .cached(settings.language, bundle: bundle)
         refresh(force: true)
     }
 
     var textScale: Double { settings.textScale }
 
     func apply(_ newSettings: SaverSettings) {
-        let languageChanged = newSettings.language != settings.language
-        settings = newSettings
-        if languageChanged {
-            library = ClockLibrary(language: newSettings.language, bundle: bundle)
+        if newSettings.language != settings.language {
+            library = .cached(newSettings.language, bundle: bundle)
         }
+        settings = newSettings
         refresh(force: true)
     }
 
@@ -41,7 +36,7 @@ final class ClockEngine: ObservableObject {
 
     private func refresh(force: Bool) {
         let now = Date()
-        let key = Self.keyFormatter.string(from: now)
+        let key = Self.key(for: now)
         updateDrift(now)
         guard force || key != currentKey else { return }
         currentKey = key
@@ -65,6 +60,11 @@ final class ClockEngine: ObservableObject {
         }
         let seconds = now.timeIntervalSinceReferenceDate
         drift = CGSize(width: sin(seconds / 137), height: cos(seconds / 197))
+    }
+
+    private static func key(for date: Date) -> String {
+        let parts = calendar.dateComponents([.hour, .minute], from: date)
+        return String(format: "%02ld:%02ld", parts.hour ?? 0, parts.minute ?? 0)
     }
 
     private static func variant(for date: Date, count: Int) -> Int {

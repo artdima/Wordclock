@@ -86,12 +86,22 @@
 			isa = PBXFileReference;
 			fileEncoding = 4;
 			lastKnownFileType = text.json;
-			path = Russia.json;
+			path = Russian.json;
 			sourceTree = "<group>";
 		};
 		09EA015405304F0F9AB33696 = {
 			isa = PBXBuildFile;
 			fileRef = 356D70DA82864C7F82B16CD8;
+		};
+		A7C1E9D24B3F4E6A9D0B5C8E = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.json.xcstrings;
+			path = Localizable.xcstrings;
+			sourceTree = "<group>";
+		};
+		D4F8B2A61C7E4F9B8E3A6D1C = {
+			isa = PBXBuildFile;
+			fileRef = A7C1E9D24B3F4E6A9D0B5C8E;
 		};
 		EFD7DE07C2F74AD194C1451A = {
 			isa = PBXFileReference;
@@ -121,6 +131,7 @@
 				6D07F9C38CB64D09BF4B335E,
 				6FCE175D9F7E4589A132EC6A,
 				B73263C279E1435D9E63E2CB,
+				A7C1E9D24B3F4E6A9D0B5C8E,
 			);
 			path = WordclockScreenSaver;
 			sourceTree = "<group>";
@@ -179,6 +190,7 @@
 			files = (
 				EC936E415DD143A4B3391E1B,
 				09EA015405304F0F9AB33696,
+				D4F8B2A61C7E4F9B8E3A6D1C,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,11 +255,11 @@
 		DB10D472A1A8487C9E3986C8 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DY3Z5JMQ7L;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = WordclockScreenSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
@@ -258,10 +270,10 @@
 				);
 				MACH_O_TYPE = mh_bundle;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = wordclock.clock.WordclockScreenSaver;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.artdima.Wordclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -269,11 +281,11 @@
 		6B0C4E1A86D141D1A183FBAB = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DY3Z5JMQ7L;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = WordclockScreenSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
@@ -284,10 +296,10 @@
 				);
 				MACH_O_TYPE = mh_bundle;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = wordclock.clock.WordclockScreenSaver;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.artdima.Wordclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -346,6 +358,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 7402B8D34CEC468CA011AD2D;
 			productRefGroup = 6014C2EC85B945F09778FEAB;
