@@ -1,6 +1,7 @@
 import Combine
 import CoreGraphics
 import Foundation
+import os
 
 final class ClockEngine: ObservableObject {
     @Published private(set) var phrase = ""
@@ -10,6 +11,7 @@ final class ClockEngine: ObservableObject {
     private let bundle: Bundle
     private var library: ClockLibrary
     private var currentKey = ""
+    private var settingsStamp: Date?
 
     private static let calendar = Calendar.autoupdatingCurrent
 
@@ -17,6 +19,7 @@ final class ClockEngine: ObservableObject {
         self.settings = settings
         self.bundle = bundle
         self.library = .cached(settings.language, bundle: bundle)
+        self.settingsStamp = SettingsStore.modificationDate
         refresh(force: true)
     }
 
@@ -31,7 +34,18 @@ final class ClockEngine: ObservableObject {
     }
 
     func tick() {
+        reloadSettingsIfChanged()
         refresh(force: false)
+    }
+
+    private func reloadSettingsIfChanged() {
+        let stamp = SettingsStore.modificationDate
+        guard stamp != settingsStamp else { return }
+        settingsStamp = stamp
+        let stored = SettingsStore.load()
+        guard stored != settings else { return }
+        WordclockBundle.logger.notice("settings reloaded in \(WordclockBundle.process, privacy: .public)")
+        apply(stored)
     }
 
     private func refresh(force: Bool) {

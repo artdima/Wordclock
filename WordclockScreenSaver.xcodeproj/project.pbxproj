@@ -93,6 +93,26 @@
 			isa = PBXBuildFile;
 			fileRef = 356D70DA82864C7F82B16CD8;
 		};
+		B3E7A1F09C2D4B5E8F6A7D3C = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			path = thumbnail.png;
+			sourceTree = "<group>";
+		};
+		C9D2B4E17A3F4C6D9E8B5A2F = {
+			isa = PBXBuildFile;
+			fileRef = B3E7A1F09C2D4B5E8F6A7D3C;
+		};
+		E1F3C5A28B4D4E7FA9C6B8D4 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			path = "thumbnail@2x.png";
+			sourceTree = "<group>";
+		};
+		F5A7D9C36E8B4F1DB2E4C7A6 = {
+			isa = PBXBuildFile;
+			fileRef = E1F3C5A28B4D4E7FA9C6B8D4;
+		};
 		A7C1E9D24B3F4E6A9D0B5C8E = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.json.xcstrings;
@@ -118,7 +138,7 @@
 			isa = PBXFileReference;
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
-			path = WordclockScreenSaver.saver;
+			path = Wordclock.saver;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0DE7CCA906904A65AADCCD28 = {
@@ -132,6 +152,8 @@
 				6FCE175D9F7E4589A132EC6A,
 				B73263C279E1435D9E63E2CB,
 				A7C1E9D24B3F4E6A9D0B5C8E,
+				B3E7A1F09C2D4B5E8F6A7D3C,
+				E1F3C5A28B4D4E7FA9C6B8D4,
 			);
 			path = WordclockScreenSaver;
 			sourceTree = "<group>";
@@ -191,6 +213,8 @@
 				EC936E415DD143A4B3391E1B,
 				09EA015405304F0F9AB33696,
 				D4F8B2A61C7E4F9B8E3A6D1C,
+				C9D2B4E17A3F4C6D9E8B5A2F,
+				F5A7D9C36E8B4F1DB2E4C7A6,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +281,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -271,7 +295,7 @@
 				MACH_O_TYPE = mh_bundle;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.artdima.Wordclock;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Wordclock;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = saver;
@@ -283,7 +307,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -297,7 +321,7 @@
 				MACH_O_TYPE = mh_bundle;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.artdima.Wordclock;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Wordclock;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = saver;

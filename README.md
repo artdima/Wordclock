@@ -18,10 +18,10 @@ Every minute of the day has its own set of phrasings, up to eleven of them, stor
 
 | Setting | What it does |
 | -------------------- | ----------------------------------------------------------------- |
-| **Language** | Russian or English phrasings; follows the system language until you choose |
+| **Language** | Russian or English phrasings; English by default |
 | **Vary the wording** | A different phrasing every minute instead of always the first one |
 | **Shift the text** | Slowly drifts the text across the screen to spare the display |
-| **Text size** | Scales the type from 50 % to 160 % |
+| **Text size** | Scales the type from 50 % to 160 %, 55 % by default |
 
 The settings sheet itself is in English and Russian.
 
@@ -29,14 +29,14 @@ The settings sheet itself is in English and Russian.
 
 **From a release.** Download `Wordclock-x.y.saver.zip` from
 [Releases](https://github.com/artdima/verbarius/releases), unzip it and double-click
-`WordclockScreenSaver.saver` — System Settings offers to install it. The bundle is signed with a
+`Wordclock.saver` — System Settings offers to install it. The bundle is signed with a
 Developer ID and notarized, so Gatekeeper lets it through.
 
 **From source.**
 
 1. Open `WordclockScreenSaver.xcodeproj` in Xcode and build it (⌘B). The project signs ad hoc
    (“Sign to Run Locally”), so no Apple developer account is needed.
-2. `Products → WordclockScreenSaver.saver → Show in Finder`, then double-click it or
+2. `Products → Wordclock.saver → Show in Finder`, then double-click it or
    copy it into `~/Library/Screen Savers/`.
 3. `System Settings → Screen Saver → Wordclock`, the **Options** button opens the table above.
 
@@ -51,13 +51,13 @@ ClockEngine.swift                half-second tick, phrase for the current minute
 ClockLibrary.swift               JSON parsing: value_1…value_N → array of options
 ClockScreen.swift                full-screen text layout
 ConfigureView.swift              settings window
-Settings.swift                   settings in ScreenSaverDefaults
+Settings.swift                   settings file in Application Support, atomic writes
 Localizable.xcstrings            settings window strings, en + ru
 scripts/validate_phrases.py      checks both JSON files; runs in CI
 scripts/release.sh               Developer ID build, notarization, stapling
 ```
 
-Around 390 lines of Swift and two JSON files, no dependencies. The engine holds no view
+Around 400 lines of Swift and two JSON files, no dependencies. The engine holds no view
 and the view holds no clock: `ClockEngine` publishes a phrase, an offset and the current
 settings, `ClockScreen` draws them.
 
@@ -71,6 +71,25 @@ explicitly, otherwise SwiftUI looks the key up in the host and shows it untransl
 **The time key comes from `Calendar.autoupdatingCurrent`, not a `DateFormatter`.** A formatter
 follows the 12-hour setting of the system (`09:41 AM` matches nothing in the JSON) and freezes
 the time zone it was created with, while `legacyScreenSaver` can live for days.
+
+**Settings live in a plist file, not in `ScreenSaverDefaults`.** Since macOS 14 System Settings
+runs two `legacyScreenSaver` processes for a saver — one hosts the Options window, the other
+renders the preview — and the real screen saver is a third one that outlives every activation.
+They share one sandbox container but not one `UserDefaults` cache: a value written through
+`ScreenSaverDefaults` in one process is never seen by the others until they restart. So the
+sheet writes `Application Support/Wordclock/settings.plist` atomically, and every engine checks
+the file's modification date on each tick (one `stat`, twice a second) and reloads when it
+changes. The preview, the sheet and every display stay in sync without a restart.
+
+**The Options window is owned by the view.** The host keeps only a weak reference to what
+`configureSheet` returns, so the view holds the window until it closes. It is created anew on
+every request with fresh settings and closed with `endSheet` when the host attached it as a
+sheet, otherwise with `close()`. If the host has not presented it a second after asking for it,
+the view shows it itself as a floating window and says so in the log.
+
+**Animation stops on `com.apple.screensaver.willstop`.** Since Sonoma the host neither calls
+`stopAnimation()` nor destroys the view when the saver is dismissed, so without this the tick
+timer would keep rendering in the background forever.
 
 **The phrasing is derived from the minute number, not drawn at random.** Every display
 shows the same wording at the same time, and a re-tick inside the minute never swaps the
@@ -103,6 +122,13 @@ WORDCLOCK_TEAM_ID=<TEAM> scripts/release.sh
 The script builds Release with `Developer ID Application`, notarizes the zip, staples the
 bundle and writes `dist/Wordclock-<version>.saver.zip` with its SHA-256. Bump
 `MARKETING_VERSION` in the project before running it.
+
+## Known limitations
+
+On macOS 26 the **Options** button sometimes does nothing: System Settings swallows the click
+before it reaches the saver (see [cowsaver#1](https://github.com/matthewsundling/cowsaver/issues/1)).
+Quitting and reopening System Settings restores it. The preview in the Screen Saver dialog
+may also report `isPreview == false`, so the saver does not rely on that flag.
 
 ## About the idea
 

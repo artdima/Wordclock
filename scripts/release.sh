@@ -19,7 +19,7 @@ IDENTITY="${WORDCLOCK_SIGN_IDENTITY:-Developer ID Application}"
 SCHEME="WordclockScreenSaver"
 BUILD_DIR="build"
 DIST_DIR="dist"
-PRODUCT="$BUILD_DIR/Build/Products/Release/$SCHEME.saver"
+PRODUCT="$BUILD_DIR/Build/Products/Release/Wordclock.saver"
 
 rm -rf "$PRODUCT" "$DIST_DIR"
 mkdir -p "$DIST_DIR"

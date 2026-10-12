@@ -1,64 +1,67 @@
 import Foundation
-import ScreenSaver
+import os
 
 enum WordclockBundle {
     static let bundle = Bundle(for: WordclockScreenSaverView.self)
     static let identifier = bundle.bundleIdentifier ?? "ru.artdima.Wordclock"
+    static let logger = Logger(subsystem: identifier, category: "Wordclock")
+    static var process: String { "\(ProcessInfo.processInfo.processName)[\(ProcessInfo.processInfo.processIdentifier)]" }
 }
 
-struct SaverSettings: Equatable {
+struct SaverSettings: Equatable, Codable {
     static let textScaleRange = 0.5...1.6
 
-    var language: ClockLanguage = .systemDefault
+    var language: ClockLanguage = .english
     var variety = true
     var drift = true
-    var textScale = 1.0
+    var textScale = 0.55
+
+    init() {}
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let raw = try container.decodeIfPresent(String.self, forKey: .language),
+           let stored = ClockLanguage(rawValue: raw) {
+            language = stored
+        }
+        variety = try container.decodeIfPresent(Bool.self, forKey: .variety) ?? variety
+        drift = try container.decodeIfPresent(Bool.self, forKey: .drift) ?? drift
+        if let scale = try container.decodeIfPresent(Double.self, forKey: .textScale), scale > 0 {
+            textScale = min(max(scale, Self.textScaleRange.lowerBound), Self.textScaleRange.upperBound)
+        }
+    }
 }
 
 enum SettingsStore {
-    private enum Key {
-        static let language = "language"
-        static let variety = "variety"
-        static let drift = "drift"
-        static let textScale = "textScale"
-    }
-
-    private static let defaults: ScreenSaverDefaults? = {
-        let store = ScreenSaverDefaults(forModuleWithName: WordclockBundle.identifier)
-        store?.register(defaults: [
-            Key.language: ClockLanguage.systemDefault.rawValue,
-            Key.variety: true,
-            Key.drift: true,
-            Key.textScale: 1.0
-        ])
-        return store
+    static let fileURL: URL = {
+        let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+            ?? URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent("Library/Application Support")
+        return support.appendingPathComponent("Wordclock/settings.plist")
     }()
 
+    static var modificationDate: Date? {
+        (try? FileManager.default.attributesOfItem(atPath: fileURL.path))?[.modificationDate] as? Date
+    }
+
     static func load() -> SaverSettings {
-        var settings = SaverSettings()
-        guard let store = defaults else { return settings }
-        if let raw = store.string(forKey: Key.language), let language = ClockLanguage(rawValue: raw) {
-            settings.language = language
+        guard let data = FileManager.default.contents(atPath: fileURL.path) else { return SaverSettings() }
+        do {
+            return try PropertyListDecoder().decode(SaverSettings.self, from: data)
+        } catch {
+            WordclockBundle.logger.error("settings unreadable at \(fileURL.path, privacy: .public): \(String(describing: error), privacy: .public)")
+            return SaverSettings()
         }
-        settings.variety = store.bool(forKey: Key.variety)
-        settings.drift = store.bool(forKey: Key.drift)
-        let scale = store.double(forKey: Key.textScale)
-        settings.textScale = scale > 0 ? scale.clamped(to: SaverSettings.textScaleRange) : 1.0
-        return settings
     }
 
     static func save(_ settings: SaverSettings) {
-        guard let store = defaults else { return }
-        store.set(settings.language.rawValue, forKey: Key.language)
-        store.set(settings.variety, forKey: Key.variety)
-        store.set(settings.drift, forKey: Key.drift)
-        store.set(settings.textScale, forKey: Key.textScale)
-        store.synchronize()
-    }
-}
-
-private extension Double {
-    func clamped(to range: ClosedRange<Double>) -> Double {
-        min(max(self, range.lowerBound), range.upperBound)
+        do {
+            try FileManager.default.createDirectory(at: fileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .xml
+            try encoder.encode(settings).write(to: fileURL, options: .atomic)
+            WordclockBundle.logger.notice("settings saved by \(WordclockBundle.process, privacy: .public)")
+        } catch {
+            WordclockBundle.logger.error("settings not saved to \(fileURL.path, privacy: .public): \(String(describing: error), privacy: .public)")
+        }
     }
 }

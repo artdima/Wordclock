@@ -6,7 +6,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7ECA2CA50E994389BD3A8F67"
-               BuildableName = "WordclockScreenSaver.saver"
+               BuildableName = "Wordclock.saver"
                BlueprintName = "WordclockScreenSaver"
                ReferencedContainer = "container:WordclockScreenSaver.xcodeproj">
             </BuildableReference>
@@ -22,7 +22,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7ECA2CA50E994389BD3A8F67"
-            BuildableName = "WordclockScreenSaver.saver"
+            BuildableName = "Wordclock.saver"
             BlueprintName = "WordclockScreenSaver"
             ReferencedContainer = "container:WordclockScreenSaver.xcodeproj">
          </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7ECA2CA50E994389BD3A8F67"
-            BuildableName = "WordclockScreenSaver.saver"
+            BuildableName = "Wordclock.saver"
             BlueprintName = "WordclockScreenSaver"
             ReferencedContainer = "container:WordclockScreenSaver.xcodeproj">
          </BuildableReference>

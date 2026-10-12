@@ -1,15 +1,11 @@
 import Foundation
 import os
 
-enum ClockLanguage: String, CaseIterable, Identifiable {
+enum ClockLanguage: String, CaseIterable, Identifiable, Codable {
     case russian = "Russian"
     case english = "English"
 
     var id: String { rawValue }
-
-    static var systemDefault: ClockLanguage {
-        Locale.preferredLanguages.first?.hasPrefix("ru") == true ? .russian : .english
-    }
 
     var title: String {
         switch self {
