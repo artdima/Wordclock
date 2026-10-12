@@ -37,12 +37,12 @@ codesign --verify --strict --verbose=2 "$PRODUCT"
 VERSION="$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' "$PRODUCT/Contents/Info.plist")"
 ZIP="$DIST_DIR/Wordclock-$VERSION.saver.zip"
 
-ditto -c -k --keepParent "$PRODUCT" "$ZIP"
+ditto -c -k --keepParent --norsrc --noextattr "$PRODUCT" "$ZIP"
 xcrun notarytool submit "$ZIP" --keychain-profile "$PROFILE" --wait
 xcrun stapler staple "$PRODUCT"
 xcrun stapler validate "$PRODUCT"
 
 rm -f "$ZIP"
-ditto -c -k --keepParent "$PRODUCT" "$ZIP"
+ditto -c -k --keepParent --norsrc --noextattr "$PRODUCT" "$ZIP"
 shasum -a 256 "$ZIP"
 echo "Ready: $ZIP"
