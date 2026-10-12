@@ -4,7 +4,7 @@
 
 A macOS screen saver that tells the time in words — not `21:14`, but “Fourteen minutes past nine”.
 
-[![CI](https://github.com/artdima/verbarius/actions/workflows/ci.yml/badge.svg)](https://github.com/artdima/verbarius/actions/workflows/ci.yml)
+[![CI](https://github.com/artdima/Wordclock/actions/workflows/ci.yml/badge.svg)](https://github.com/artdima/Wordclock/actions/workflows/ci.yml)
 [![macOS 13+](https://img.shields.io/badge/macOS-13+-000000?style=flat-square&logo=apple&logoColor=white)](https://www.apple.com/macos/)
 [![Swift 5](https://img.shields.io/badge/Swift-5-F05138?style=flat-square&logo=swift&logoColor=white)](https://swift.org)
 [![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-1575F9?style=flat-square)](https://developer.apple.com/xcode/swiftui/)
@@ -28,9 +28,12 @@ The settings sheet itself is in English and Russian.
 ## Install
 
 **From a release.** Download `Wordclock-x.y.saver.zip` from
-[Releases](https://github.com/artdima/verbarius/releases), unzip it and double-click
+[Releases](https://github.com/artdima/Wordclock/releases), unzip it and double-click
 `Wordclock.saver` — System Settings offers to install it. The bundle is signed with a
 Developer ID and notarized, so Gatekeeper lets it through.
+
+Coming from 1.0? It installed as `WordclockScreenSaver.saver`. Delete that one from
+`~/Library/Screen Savers/` first, otherwise System Settings lists the clock twice.
 
 **From source.**
 
